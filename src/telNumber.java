@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class telNumber {
     private HashMap<String, List<Integer>> hashmap = new HashMap<>();
@@ -10,8 +11,6 @@ public class telNumber {
             hashmap.put(lastName, tels);
         } else {
             hashmap.get(lastName).add(telNum);
-            hashmap.get(lastName).sort(Collections.reverseOrder());
-
         }
 
     }
@@ -50,6 +49,20 @@ public class telNumber {
     }
 
     String getAll() {
-        return hashmap.toString();
+        LinkedHashMap<String, List<Integer>> sortedMap = new LinkedHashMap<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        for (Map.Entry<String, List<Integer>> entry : hashmap.entrySet()) {
+            list.add(entry.getValue().size());
+        }
+        Collections.sort(list, Collections.reverseOrder());
+        for (Integer siz : list) {
+            for (HashMap.Entry<String, List<Integer>> entry : hashmap.entrySet()) {
+                if (entry.getValue().size() == siz) {
+                    sortedMap.put(entry.getKey(), entry.getValue());
+                }
+            }
+        }
+
+        return sortedMap.toString();
     }
 }

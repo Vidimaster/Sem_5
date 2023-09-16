@@ -17,7 +17,7 @@ public class Sem5 {
         telNumbers.add("Petrov", 2877227);
         telNumbers.add("Petrov", 1877227);
         System.out.println(telNumbers.getByLastName("Petrov"));
-        System.out.println(telNumbers.getByTelNum(877227));
+        System.out.println(telNumbers.getByTelNum(3434));
         System.out.println(telNumbers.getAll());
 
     }
